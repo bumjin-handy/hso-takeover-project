@@ -1,4 +1,4 @@
-package com.hs.takeOver.domain;
+package com.hs.takeover.domain;
 
 import java.time.LocalDateTime;
 
@@ -15,10 +15,10 @@ import lombok.Setter;
 	@Getter
 	@Setter
 	@Entity
-	@Table(name = "takeOver")
-	public class takeOver {
+	@Table(name = "TAKEOVER")
+	public class TakeOver {
 	    @Id
-	    //@Column(name = "takeOver_id")
+	    //@Column(name = "takeOverId")
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Integer takeOverId;//인계ID PK
 

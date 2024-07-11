@@ -13,7 +13,7 @@ import lombok.Setter;
 	@Getter
 	@Setter
 	@Entity
-	@Table(name = "TAKEOVER")
+	@Table(name = "TAKEOVERATTACH")
 	public class TakeOverAttach {
 		
 		private Integer takeOverId;
@@ -26,11 +26,4 @@ import lombok.Setter;
 	    private String fileName;
 
 	    private Integer fileSize;
-	    
-	    /*	    
-	    TAKEOVERID
-	    ATTACHID
-	    FILENAME
-	    FILESIZE*/
-
 	}
