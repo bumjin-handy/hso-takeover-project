@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'war'
+    id 'com.palantir.docker' version '0.36.0'
 }
 
 group = 'com.hs'
@@ -48,4 +49,12 @@ bootWar {
 dependencies {
    implementation("com.hs.framework:directory-core-1.3")
    implementation("com.hs.frmwk.hsfrmwk:hsfrmwk-3.0")
+}
+
+def dockerImgName = "bumjin/hso-takeover-project:${project.name}-${project.version}"
+docker {
+    println("gradle docker build start = ${dockerImgName}")
+    name dockerImgName
+    files tasks.bootWar.outputs.files
+    buildArgs(['WAR_FILE': tasks.bootWar.outputs.files.singleFile.name])
 }
