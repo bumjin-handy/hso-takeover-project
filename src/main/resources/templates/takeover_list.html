@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th>인계자</th>
+            <th>인수자</th>
+            <th>입회자</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="take: ${takeOverList}">
+            <td th:text="${take.handOverUserName}"></td>
+            <td th:text="${take.takeOverUserName}"></td>
+            <td th:text="${take.observeUserName}"></td>
+        </tr>
+    </tbody>
+</table>
