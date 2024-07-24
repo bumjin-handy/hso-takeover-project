@@ -1,5 +1,7 @@
 package com.hs.takeover.contoller;
 
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hs.gw.common.DeptID;
 import com.hs.gw.common.UserID;
 import com.hs.gw.org.info.User;
+import com.hs.takeover.conts.TakeOverConst;
 import com.hs.takeover.domain.TakeOver;
 import com.hs.takeover.repository.TakeOverRepository;
 
@@ -19,7 +22,7 @@ public class JpaTest {
     private TakeOverRepository takeOverRepository;
 
     @Test
-    @Transactional
+    //@Transactional
     void testJpa() {        
     	TakeOver takeOver = new TakeOver();
     	//인계자
@@ -41,6 +44,12 @@ public class JpaTest {
     	takeOver.setObserveDeptId(takeObserveUser.getDeptID().getID());
     	takeOver.setObserveDeptName(takeObserveUser.getDeptName());
     	
+    	//공통
+    	takeOver.setRegistDate(LocalDateTime.now());
+    	takeOver.setRegistDeptId(handOverUser.getDeptID().getID());
+    	takeOver.setRegistDeptName(handOverUser.getDeptName());
+    	takeOver.setMainDuty("마케팅");
+    	takeOver.setStatus(TakeOverConst.STATUS_TAKEOVER_REQUEST);//인수요청
     	takeOverRepository.save(takeOver);
     }
     

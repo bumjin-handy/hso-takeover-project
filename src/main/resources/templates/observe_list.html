@@ -1,6 +1,6 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content" class="container my-3">
-<!-- 인수인계함 부서폴더-->
+<!-- 입회함 -->
 <table>
     <thead>
         <tr>
@@ -9,7 +9,6 @@
 			<th>담당업무</th>
             <th>인계자</th>
 			<th>인수자</th>
-			<th>입회자</th>
 			<th>상태</th>
         </tr>
     </thead>
@@ -20,7 +19,6 @@
         	<td th:text="${take.mainDuty}"></td>
             <td th:text="${take.handOverUserName}"></td>
             <td th:text="${take.takeOverUserName}"></td>
-            <td th:text="${take.observeUserName}"></td>
             <td th:text="${take.status}"></td>
         </tr>
     </tbody>

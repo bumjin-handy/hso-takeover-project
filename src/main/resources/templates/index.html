@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>초기페이지</title>
-</head>
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
 <body>
-    Welcome to handySoft Test <span th:text="${country}"/> changed
+	<ul>
+		<li><a href="login.html" th:href="@{/takeover/login}">로그인</a></li>
+		<li><a href="regist.html" th:href="@{/takeover/regist}">인계 등록</a></li>
+		<li><a href="handover.html" th:href="@{/handover/list}">인계함</a></li>
+		<li><a href="takeover.html" th:href="@{/takeover/list}">인수함</a></li>
+		<li><a href="observe.html" th:href="@{/observe/list}">입회함</a></li>
+		<li><a href="history.html" th:href="@{/history/list}">인수인계함</a></li>
+	</ul>
 </body>
+</div>
 </html>
