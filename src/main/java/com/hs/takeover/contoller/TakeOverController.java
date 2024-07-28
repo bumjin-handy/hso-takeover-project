@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -74,6 +75,19 @@ public class TakeOverController {
 	    model.addAttribute("list", historyList);
         return "history_list";
     }
-	
+
+	@GetMapping(value = "/takeover/detail/{id}")
+	public String detail(Model model, @PathVariable("id") String id) {
+		TakeOver takeOver = takeOverService.getTakeOver(id);
+		model.addAttribute("takeOver", takeOver);
+		return "takeover_detail";
+	}
+
+	//인계신청
+	//인계자가 인계신청서를 작성 한다.
+	@GetMapping("/takeover/registration")
+	public String takeOverRegist(Model model) {
+		return "takeover_registration";
+	}
 	
 }

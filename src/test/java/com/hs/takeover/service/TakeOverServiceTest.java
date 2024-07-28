@@ -1,6 +1,7 @@
 package com.hs.takeover.service;
 
 import com.hs.takeover.domain.TakeOver;
+import com.hs.takeover.exceptions.DataNotFoundException;
 import com.hs.takeover.repository.TakeOverRepository;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 class TakeOverServiceTest {
@@ -59,5 +61,32 @@ class TakeOverServiceTest {
         // Then
         assertTrue(result.isEmpty());
         verify(takeOverRepository, times(1)).findAll();
+    }
+
+    @Test
+    void getTakeOver_ExistingId_ReturnsTakeOver() {
+        // Arrange
+        String id = "existingId";
+        TakeOver expectedTakeOver = new TakeOver();
+        when(takeOverRepository.findById(id)).thenReturn(Optional.of(expectedTakeOver));
+
+        // Act
+        TakeOver result = takeOverService.getTakeOver(id);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(expectedTakeOver, result);
+        verify(takeOverRepository, times(1)).findById(id);
+    }
+
+    @Test
+    void getTakeOver_NonExistingId_ThrowsDataNotFoundException() {
+        // Arrange
+        String id = "nonExistingId";
+        when(takeOverRepository.findById(id)).thenReturn(Optional.empty());
+
+        // Act & Assert
+        assertThrows(DataNotFoundException.class, () -> takeOverService.getTakeOver(id));
+        verify(takeOverRepository, times(1)).findById(id);
     }
 }

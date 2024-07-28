@@ -1,26 +1,26 @@
-<html layout:decorate="~{layout}">
+<html layout:decorate="~{layout}" xmlns:th="http://www.thymeleaf.org">
 <div layout:fragment="content" class="container my-3">
-<!-- 입회함 -->
-<table>
-    <thead>
+    <!-- 입회함 -->
+    <table>
+        <thead>
         <tr>
-			<th>등록일자</th>
-			<th>등록부서</th>
-			<th>담당업무</th>
+            <th>등록일자</th>
+            <th>등록부서</th>
+            <th>담당업무</th>
             <th>인계자</th>
-			<th>인수자</th>
-			<th>상태</th>
+            <th>인수자</th>
+            <th>상태</th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         <tr th:each="take: ${list}">
-        	<td th:text="${#temporals.format(take.registDate, 'yyyy.MM.dd')}"></td>
-        	<td th:text="${take.registDeptName}"></td>
-        	<td th:text="${take.mainDuty}"></td>
+            <td th:text="${#temporals.format(take.registDate, 'yyyy.MM.dd')}"></td>
+            <td th:text="${take.registDeptName}"></td>
+            <td><a href="detail.html" th:href="@{|/takeover/detail/${take.takeOverId}|}" th:text="${take.mainDuty}"></a></td>
             <td th:text="${take.handOverUserName}"></td>
             <td th:text="${take.takeOverUserName}"></td>
             <td th:text="${take.status}"></td>
         </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
 </div>
