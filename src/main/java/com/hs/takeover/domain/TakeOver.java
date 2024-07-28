@@ -1,16 +1,12 @@
 package com.hs.takeover.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.Table;
-
-import lombok.Getter;
-import lombok.Setter;
 
 	@Getter
 	@Setter
