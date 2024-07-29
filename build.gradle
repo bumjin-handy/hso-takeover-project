@@ -3,7 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'war'
-    id 'com.palantir.docker' version '0.36.0'
+    id 'com.palantir.docker' version '0.34.0'
 }
 
 group = 'com.hs'
@@ -27,14 +27,21 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
     runtimeOnly 'javax.servlet:jstl'
     runtimeOnly 'com.h2database:h2:1.4.200'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa' 
+	implementation 'commons-lang:commons-lang:2.6'
+	implementation 'org.springframework.boot:spring-boot-devtools'
     //runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     compileOnly 'org.projectlombok:lombok'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // mockWebServer
+	testImplementation('com.squareup.okhttp3:okhttp:4.12.0')
+	testImplementation('com.squareup.okhttp3:mockwebserver:4.12.0')
+    
 }
 
 tasks.named('test') {

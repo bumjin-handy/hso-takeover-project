@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hso-takeover
+  labels:
+    app: hso-takeover
+spec:
+  selector:
+    matchLabels:
+      app: hso-takeover
+  template:
+    metadata:
+      labels:
+        app: hso-takeover
+    spec:
+      containers:
+      - name: hso-takeover
+        image: bumjin/hso-takeover-project:0.0.1-SNAPSHOT
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hso-takeover-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: hso-takeover
+  ports:
+  - name: http
+    port: 8080
