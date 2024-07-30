@@ -3,12 +3,12 @@ package com.hs.takeover.api.dto;
 
 import javax.xml.bind.annotation.*;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @XmlRootElement(name = "session")
@@ -39,6 +39,9 @@ public class GWOpenApiResponseDto {
     // Getters and setters
     // ... (생략)
 
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     @XmlAccessorType(XmlAccessType.FIELD)
     public static class UserDTO {
         private String id;

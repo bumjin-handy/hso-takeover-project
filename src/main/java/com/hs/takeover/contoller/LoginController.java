@@ -1,5 +1,6 @@
 package com.hs.takeover.contoller;
 
+import com.hs.takeover.api.dto.GWErrorResponseDto;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,15 +24,23 @@ public class LoginController {
     @PostMapping("/takeover/login")
     public ResponseEntity<?> login(@RequestBody LoginRequestDto loginRequest) {
         log.debug("username=" + loginRequest.getUsername() + ", password=" + loginRequest.getPassword());
-        GWOpenApiResponseDto gWOpenApiResponseDto = gwOpenApiLoginService.requestLogin(loginRequest.getUsername(), loginRequest.getPassword());
-        if (isValidUser(gWOpenApiResponseDto)) {
-            LoginResponseDto response = new LoginResponseDto("로그인 성공", gWOpenApiResponseDto.getUname(), gWOpenApiResponseDto.getKey());
-            return ResponseEntity.ok(response);
+        Object responseDto = gwOpenApiLoginService.requestLogin(loginRequest.getUsername(), loginRequest.getPassword());
+        if (responseDto instanceof GWOpenApiResponseDto) {
+            GWOpenApiResponseDto gWOpenApiResponseDto = (GWOpenApiResponseDto) responseDto;
+            if (isValidUser(gWOpenApiResponseDto)) {
+                LoginResponseDto response = new LoginResponseDto("로그인 성공", gWOpenApiResponseDto.getUname(), gWOpenApiResponseDto.getKey());
+                return ResponseEntity.ok(response);
+            } else {
+                return ResponseEntity.badRequest().body("로그인 실패: 잘못된 사용자 이름 또는 비밀번호");
+            }
+        } else if (responseDto instanceof GWErrorResponseDto) {
+            GWErrorResponseDto gwErrorResponseDto = (GWErrorResponseDto) responseDto;
+            //session
+            return ResponseEntity.ok(gwErrorResponseDto);
         } else {
-            return ResponseEntity.badRequest().body("로그인 실패: 잘못된 사용자 이름 또는 비밀번호");
+            return null;
         }
     }
-
     private boolean isValidUser(GWOpenApiResponseDto gWOpenApiResponseDto) {
         log.debug("GWOpenApiResponseDto K=" + gWOpenApiResponseDto.getKey());
         return StringUtils.isNotBlank(gWOpenApiResponseDto.getKey());

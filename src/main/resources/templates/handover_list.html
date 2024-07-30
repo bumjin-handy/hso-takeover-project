@@ -16,7 +16,7 @@
         <tr th:each="take: ${list}">
         	<td th:text="${#temporals.format(take.registDate, 'yyyy.MM.dd')}"></td>
         	<td th:text="${take.registDeptName}"></td>
-        	<td th:text="${take.mainDuty}"></td>
+        	<td><a href="detail.html" th:href="@{|/takeover/detail/${take.takeOverId}|}" th:text="${take.mainDuty}"></a></td>
             <td th:text="${take.takeOverUserName}"></td>
             <td th:text="${take.observeUserName}"></td>
             <td th:text="${take.status}"></td>

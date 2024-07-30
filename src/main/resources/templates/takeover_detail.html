@@ -1,0 +1,42 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
+<!-- 인수인계 상세정보 -->
+인계자ID <td th:text="${takeOver.handOverUserId}"></td>
+인계자명<td th:text="${takeOver.handOverUserName}"></td>
+인계자 직위명<td th:text="${takeOver.handOverPositionName}"></td>
+인계자 개인전화번호<td th:text="${takeOver.handOverOfficePhone}"></td>
+인계자 회사전화번호<td th:text="${takeOver.handOverPersonalPhone}"></td>
+인계자 부서ID<td th:text="${takeOver.handOverDeptId}"></td>
+인계자 부서명<td th:text="${takeOver.handOverDeptName}"></td>
+
+인수자 ID<td th:text="${takeOver.takeOverUserId}"></td>
+인수자명<td th:text="${takeOver.takeOverUserName}"></td>
+인수자 직위명<td th:text="${takeOver.takeOverPositionName}"></td>
+인수자 개인전화번호<td th:text="${takeOver.takeOverOfficePhone}"></td>
+인수자 회사전화번호<td th:text="${takeOver.takeOverPersonalPhone}"></td>
+인수자 부서ID<td th:text="${takeOver.takeOverDeptId}"></td>
+인수자 부서명<td th:text="${takeOver.takeOverDeptName}"></td>
+		
+입회자 ID<td th:text="${takeOver.observeUserId}"></td>
+입회자명<td th:text="${takeOver.observeUserName}"></td>
+입회자 직위명<td th:text="${takeOver.observePositionName}"></td>
+입회자 개인전화번호<td th:text="${takeOver.observeOfficePhone}"></td>
+입회자 회사전화번호<td th:text="${takeOver.observePersonalPhone}"></td>
+입회자 부서ID<td th:text="${takeOver.observeDeptId}"></td>
+입회자 부서명<td th:text="${takeOver.observeDeptName}"></td>
+	
+인계의견<td th:text="${takeOver.handoverOpinion}"></td>
+인수 확인/반려일<td th:text="${takeOver.takeOverDate}"></td>
+입회확인/반려일<td th:text="${takeOver.observeDate}"></td>
+인수인계상태<td th:text="${takeOver.status}"></td>인수요청:1, 인수반려:2, 입회요청:3, 입회반려:4, 완료:5
+
+
+등록일자<td th:text="${takeOver.registDate}"></td>
+등록 부서ID<td th:text="${takeOver.registDeptId}"></td>
+등록 부서명<td th:text="${takeOver.registDeptName}"></td>
+
+담당업무<td th:text="${takeOver.mainDuty}"></td>
+예산물품내역<td th:text="${takeOver.budgetItemDetail}"></td>
+주요업무계획및 진행상황<td th:text="${takeOver.businessPlan}"></td>
+</div>
+

@@ -33,6 +33,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa' 
 	implementation 'commons-lang:commons-lang:2.6'
 	implementation 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework:spring-oxm'
+
     //runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     compileOnly 'org.projectlombok:lombok'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'

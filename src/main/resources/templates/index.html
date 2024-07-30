@@ -1,8 +1,10 @@
-<html layout:decorate="~{layout}">
+	<html layout:decorate="~{layout}">
 <div layout:fragment="content" class="container my-3">
 <body>
 	<ul>
-		<li><a href="login.html" th:href="@{/takeover/login}">로그인</a></li>
+		<input type="text" name="username" id="username">
+		<input type="password" name="password" id="password">
+		<input type="button" value="로그인" id="login">
 		<li><a href="regist.html" th:href="@{/takeover/regist}">인계 등록</a></li>
 		<li><a href="handover.html" th:href="@{/handover/list}">인계함</a></li>
 		<li><a href="takeover.html" th:href="@{/takeover/list}">인수함</a></li>
